@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1728"><link rel="manifest" href="manifest.json">
+<title>VISION LEADS</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark">V</span><div><b>VISION</b><small>LEADS</small></div></div>
+    <div class="role">AMBIENTE DE DEMONSTRAÇÃO</div>
+    <nav>
+      <button class="nav active" data-page="dashboard">▦ <span>Painel</span></button>
+      <button class="nav" data-page="leads">◎ <span>Leads</span></button>
+      <button class="nav" data-page="sellers">♙ <span>Vendedores</span></button>
+      <button class="nav" data-page="reports">▤ <span>Relatórios</span></button>
+      <button class="nav" data-page="settings">⚙ <span>Configurações</span></button>
+    </nav>
+    <div class="side-foot">VISION TELECOM<br><small>Prospecção inteligente</small></div>
+  </aside>
+  <main class="main">
+    <header><div><small class="eyebrow">CENTRAL COMERCIAL</small><h1 id="page-title">Painel geral</h1></div><div class="user"><span class="avatar">A</span><span><b>Administrador</b><small>Perfil de demonstração</small></span></div></header>
+    <section id="dashboard" class="page">
+      <div class="welcome"><div><p class="eyebrow">BEM-VINDO À VISION LEADS</p><h2>Transforme oportunidades<br>em novos clientes.</h2><p>Organize contatos, acompanhe sua equipe e acompanhe resultados em um só lugar.</p></div><div class="welcome-icon">↗</div></div>
+      <div class="metrics">
+        <article><small>LEADS CADASTRADOS</small><strong id="total-leads">0</strong><span>Na base de demonstração</span></article>
+        <article><small>EM ATENDIMENTO</small><strong id="in-progress">0</strong><span>Contatos em andamento</span></article>
+        <article><small>VENDAS CONCLUÍDAS</small><strong id="won-leads">0</strong><span>Convertidos</span></article>
+        <article><small>VENDEDORES ATIVOS</small><strong id="seller-count">0</strong><span>Equipe cadastrada</span></article>
+      </div>
+      <div class="section-head"><div><h3>Leads recentes</h3><p>Últimos contatos adicionados à plataforma.</p></div><button class="primary" id="new-lead-top">＋ Novo lead</button></div>
+      <div class="table-wrap"><table><thead><tr><th>CLIENTE</th><th>SERVIÇO</th><th>VENDEDOR</th><th>STATUS</th></tr></thead><tbody id="recent-table"><tr><td colspan="4" class="empty">Nenhum lead cadastrado. Adicione o primeiro contato.</td></tr></tbody></table></div>
+    </section>
+    <section id="leads" class="page hidden">
+      <div class="section-head"><div><h3>Gestão de leads</h3><p>Cadastre e acompanhe oportunidades comerciais.</p></div><button class="primary" id="new-lead">＋ Cadastrar lead</button></div>
+      <div class="filters"><input id="search" placeholder="Buscar por nome ou telefone"><select id="filter-status"><option value="">Todos os status</option><option>Novo</option><option>Em atendimento</option><option>Venda realizada</option><option>Sem interesse</option></select></div>
+      <div class="table-wrap"><table><thead><tr><th>CLIENTE</th><th>TELEFONE</th><th>SERVIÇO</th><th>RESPONSÁVEL</th><th>STATUS</th><th>AÇÃO</th></tr></thead><tbody id="leads-table"></tbody></table></div>
+    </section>
+    <section id="sellers" class="page hidden">
+      <div class="section-head"><div><h3>Equipe de vendas</h3><p>Cadastro e acompanhamento de vendedores.</p></div><button class="primary" id="new-seller">＋ Novo vendedor</button></div>
+      <div id="seller-list" class="seller-grid"></div>
+    </section>
+    <section id="reports" class="page hidden"><h3>Relatórios e desempenho</h3><p class="muted">Resumo da base local de demonstração.</p><div class="metrics"><article><small>TAXA DE CONVERSÃO</small><strong id="conversion">0%</strong><span>Vendas / leads</span></article><article><small>LEADS SEM RESPONSÁVEL</small><strong id="unassigned">0</strong><span>Aguardando distribuição</span></article></div><div class="table-wrap"><table><thead><tr><th>VENDEDOR</th><th>LEADS</th><th>VENDAS</th></tr></thead><tbody id="report-table"></tbody></table></div></section>
+    <section id="settings" class="page hidden"><h3>Configurações iniciais</h3><p class="muted">Identidade e regras previstas para a implantação.</p><div class="settings-card"><b>Empresa</b><p>Vision Telecom</p><b>Perfis de acesso</b><p>Administrador e vendedor</p><b>Privacidade</b><p>O vendedor deverá acessar apenas os leads atribuídos a ele. Essa regra será aplicada no banco de dados na etapa de integração.</p><b>Integrações futuras</b><p>Meta Lead Ads, WhatsApp Business e formulários próprios, sempre com autorização e consentimento aplicáveis.</p></div></section>
+    <footer>VISION LEADS • Protótipo inicial — dados armazenados apenas neste navegador.</footer>
+  </main>
+</div>
+<dialog id="lead-dialog"><form id="lead-form"><div class="modal-head"><div><small class="eyebrow">NOVA OPORTUNIDADE</small><h2>Cadastrar lead</h2></div><button type="button" class="close" data-close>×</button></div>
+<label>Nome do cliente<input name="name" required placeholder="Nome completo"></label><label>WhatsApp / telefone<input name="phone" required placeholder="(43) 99999-9999"></label>
+<div class="two"><label>Serviço<select name="service"><option>Internet fibra</option><option>Proteção veicular</option><option>Limpa Nome</option><option>Rastreador veicular</option><option>Negociação de dívidas</option></select></label><label>Vendedor<select name="seller" id="lead-seller"><option value="">Sem responsável</option></select></label></div>
+<label>Origem<select name="source"><option>Cadastro manual</option><option>Instagram</option><option>Facebook</option><option>Google</option><option>Indicação</option><option>WhatsApp</option></select></label><label>Observações<textarea name="notes" rows="3" placeholder="Informações importantes (opcional)"></textarea></label><button class="primary full">Salvar lead</button></form></dialog>
+<dialog id="seller-dialog"><form id="seller-form"><div class="modal-head"><div><small class="eyebrow">EQUIPE COMERCIAL</small><h2>Novo vendedor</h2></div><button type="button" class="close" data-close>×</button></div><label>Nome<input name="name" required placeholder="Nome do vendedor"></label><label>E-mail<input name="email" type="email" placeholder="email@exemplo.com"></label><button class="primary full">Adicionar vendedor</button></form></dialog>
+<script src="app.js"></script>
+</body></html>
